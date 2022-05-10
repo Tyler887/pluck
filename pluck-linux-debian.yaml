@@ -32,7 +32,7 @@ actions:
 
   - action: run
     chroot: true
-    command: grub-install /dev/sda
+    command: mount /dev/sda1 / && grub-install /dev/sda
 
   - action: run
     chroot: true
