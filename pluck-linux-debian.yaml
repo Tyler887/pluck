@@ -24,7 +24,7 @@ actions:
     mirror: https://deb.debian.org/debian # Use Debian debs because we have no mirror for Debian debs
     variant: minbase
   - action: apt
-    packages: [ sudo, openssh-server, adduser, systemd-sysv, firmware-linux, gnome, snapd, mtools, libreoffice, grub-pc, grub-common, grub2-common, python3, golang, perl, gcc, make, git, coreutils, util-linux, linux-image-amd64, software-properties-common, bash, dialog ]
+    packages: [ sudo, openssh-server, adduser, gnome-boxes, systemd-sysv, firmware-linux, gnome, snapd, mtools, libreoffice, grub-pc, grub-common, grub2-common, python3, golang, perl, gcc, make, git, coreutils, util-linux, linux-image-amd64, software-properties-common, bash, dialog ]
   - action: run
     chroot: true
     command: echo plucklinux  > /etc/hostname
