@@ -29,3 +29,8 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y debos
       - name: Build images
         run: sudo debos pluck-linux-debian.yaml --disable-fakemachine
+      - name: Upload for team to test/release
+        uses: actions/upload-artifact@v3
+        with:
+           name: pluck
+           path: ${{ github.workspace }}/pluck.iso
