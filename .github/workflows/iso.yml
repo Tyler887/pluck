@@ -50,5 +50,5 @@ jobs:
       - name: Upload for team to test/release
         uses: actions/upload-artifact@v3
         with:
-           name: pluck
+           name: pluck-server
            path: ${{ github.workspace }}/pluck.iso
