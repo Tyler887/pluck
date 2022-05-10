@@ -36,7 +36,7 @@ actions:
 
   - action: run
     chroot: true
-    command: adduser pluckuser
+    command: adduser pluckuser && addgroup sudo && adduser pluckuser sudo
   - action: pack
     file: pluck.iso
     compression: gz
