@@ -1,0 +1,36 @@
+# This file uses the "Debian" trademark.
+#
+# Pluck-Linux is not affiliated with Debian. Debian is a registered trademark
+# owned by Software in the Public Interest, Inc.
+
+# This YAML file is used to build pluck ISOs to create the ISO from the actual
+# Debian suite. These ISOs are amd64 builds on the latest Linux kernel. These are
+# "desktop" builds, servers can use "server" builds. snapd is usally installed by
+# default.
+
+# WARNING: The build is defaulted to the Debian "bookworm" distribution, but
+# if you want older software, change it to the codename of the Debian release
+# you want, e.g. "buster" or "bullseye".
+
+architecture: amd64
+
+actions:
+  - action: debootstrap
+    suite: "bookworm"
+    components:
+      - main     # Base distribution, required for most packages, like "gnome" or "snapd".
+      - non-free # Required for nonfree hardware.
+      - contrib  # Expected to be used by users. The installer does not use these packages.
+    mirror: https://deb.debian.org/debian # Use Debian debs because we have no mirror for Debian debs
+    variant: minbase
+  - action: apt
+    packages: [ sudo, openssh-server, adduser, systemd-sysv, firmware-linux, apache2, snapd, grub-pc, grub-common, grub2-common, python3, golang, perl, gcc, make, git, coreutils, util-linux, linux-image-amd64, software-properties-common, bash ]
+  - action: run
+    chroot: true
+    command: echo plucklinux-server  > /etc/hostname
+  - action: run
+    chroot: true
+    command: mount /dev / && grub-install /dev/sda
+  - action: pack
+    file: pluck.iso
+    compression: gz
