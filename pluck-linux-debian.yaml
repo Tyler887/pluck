@@ -28,9 +28,6 @@ actions:
   - action: run
     chroot: true
     command: echo plucklinux  > /etc/hostname
-  - action: run
-    chroot: true
-    command: mount /dev / && grub-install /dev/sda
   - action: pack
     file: pluck.iso
     compression: gz
